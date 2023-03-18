@@ -1,6 +1,15 @@
 <section class="productView-details">
     <div class="productView-product">
         <h1 class="productView-title" {{#if schema}}itemprop="name"{{/if}}>{{product.title}}</h1>
+        <dl class="productView-info">
+            {{#each product.custom_fields}}
+                {{#startsWith '__' name}}
+                {{else}}
+                    <dt class="productView-info-name">{{name}}:</dt>
+                    <dd class="productView-info-value">{{{value}}}</dd>
+                {{/startsWith}}
+            {{/each}}
+         </dl>
         {{#if product.brand }}
         <h2 class="productView-brand"{{#if schema}} itemprop="brand" itemscope itemtype="http://schema.org/Brand"{{/if}}>
             <a href="{{product.brand.url}}"{{#if schema}} itemprop="url"{{/if}}><span{{#if schema}} itemprop="name"{{/if}}>{{product.brand.name}}</span></a>

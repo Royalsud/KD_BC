@@ -126,6 +126,14 @@
                 <a {{#if theme_settings.card_title_type '==' 'clamp'}} class="clamp" style="-webkit-box-orient: vertical; -webkit-line-clamp: {{theme_settings.card_title_line}};"{{/if}} href="{{product.url}}" {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}}>{{product.title}}</a>
             </h4>
 
+            <dl class="productView-info">
+                {{#each product.custom_fields}}
+                    {{#startsWith '__' name}}
+                    {{else}}
+                        <dd class="productView-info-value">{{{value}}}</dd>
+                    {{/startsWith}}
+                {{/each}}
+             </dl>
             <div class="card-price" data-test-info-type="price">
                 {{#or customer (if theme_settings.restrict_to_login '!==' true)}}                    
                     {{#if price_range}}

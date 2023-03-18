@@ -18,6 +18,15 @@
                             <span class="subtitle">{{lang 'cart.this_item'}}</span>
                             <span class="title">{{product.title}}</span>
                         </h4>
+                        <dl class="productView-info">
+                            {{#each product.custom_fields}}
+                                {{#startsWith '__' name}}
+                                {{else}}
+                                    <dt class="productView-info-name">{{name}}:</dt>
+                                    <dd class="productView-info-value">{{{value}}}</dd>
+                                {{/startsWith}}
+                            {{/each}}
+                         </dl>
                         <div class="product-edit-variant"></div>
                         <div class="cart-edit-price product-edit-price" data-cart-edit-item-price>
                             {{#if product.price.with_tax}}
