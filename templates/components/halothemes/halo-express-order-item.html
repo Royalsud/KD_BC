@@ -1,0 +1,141 @@
+<article class="expressItem">
+    <figure class="expressItem-figure">
+        <img class="expressItem-image" src="{{getImage image 'productgallery_size' (cdn theme_settings.default_image_product)}}" alt="{{name}}" title="{{name}}">
+        {{#or price.non_sale_price_with_tax price.non_sale_price_without_tax}}
+        <div class="sale-badge">SALE</div>
+        {{/or}}
+        {{#unless hide_product_quick_view}}
+            {{#if theme_settings.show_product_quick_view}}
+                <a href="#" class="btnQV quickview" data-product-id="{{id}}">{{lang 'products.quick_view'}}</a>
+            {{/if}}
+        {{/unless}}
+    </figure>
+    <div class="expressItem-body">
+        <div class="expressItem-content">
+            <div class="expressItem-details">
+                <h4 class="expressItem-title">
+                    <a href="{{url}}">{{name}}</a>
+                </h4>
+                {{#if sku}}
+                    <div class="expressItem-sku"><span>{{lang 'products.sku'}}</span>{{sku}}</div>
+                {{/if}}
+                {{#if show_rating}}
+                    <p class="expressItem-rating">{{> components/products/ratings rating=rating}}</p>
+                {{/if}}
+            </div>
+            <div class="expressItem-actions">
+                {{#if price}}
+                    <div class="expressItem-price">{{> components/products/price price=price}}</div>
+                {{/if}}
+                {{#unless hide_add_to_cart}}
+                    <div class="addtocart-box">
+                        
+                    {{#if has_options}}
+                        <div class="form-field form-field--increments">
+                            <div class="form-increment" data-quantity-change="">
+                                <button class="button button--icon" data-action="dec" type="button">
+                                    <span class="is-srOnly">Decrease Quantity:</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 256 256" xml:space="preserve">
+                                        <g  transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
+                                            <path
+                                                d="M 90 24.25 c 0 -0.896 -0.342 -1.792 -1.025 -2.475 c -1.366 -1.367 -3.583 -1.367 -4.949 0 L 45 60.8 L 5.975 21.775 c -1.367 -1.367 -3.583 -1.367 -4.95 0 c -1.366 1.367 -1.366 3.583 0 4.95 l 41.5 41.5 c 1.366 1.367 3.583 1.367 4.949 0 l 41.5 -41.5 C 89.658 26.042 90 25.146 90 24.25 z"
+                                                style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;"
+                                                transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                        </g>
+                                    </svg>
+                                </button>
+                                <input class="form-input form-input--incrementTotal data-product-qty" id="data-product-qty-{{id}}" name="data-product-qty" type="tel" value="0" data-quantity-min="0" data-quantity-max="0" min="0" pattern="[0-9]*" aria-live="polite">
+                                <button class="button button--icon" data-action="inc" type="button">
+                                    <span class="is-srOnly">Increase Quantity:</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 256 256" xml:space="preserve">
+                                        <g transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
+                                            <path
+                                                d="M 90 65.75 c 0 0.896 -0.342 1.792 -1.025 2.475 c -1.366 1.367 -3.583 1.367 -4.949 0 L 45 29.2 L 5.975 68.225 c -1.367 1.367 -3.583 1.367 -4.95 0 c -1.366 -1.367 -1.366 -3.583 0 -4.95 l 41.5 -41.5 c 1.366 -1.367 3.583 -1.367 4.949 0 l 41.5 41.5 C 89.658 63.958 90 64.854 90 65.75 z"
+                                                style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;"
+                                                transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                        </g>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="data-product-option-{{id}}"><a href="{{url}}" class="button button--primary add-to-cart-option" data-product-id="{{id}}">{{lang "products.add_to_cart"}}</a></div>
+                    {{else}}
+                        {{#if pre_order}}
+                            <div class="form-field form-field--increments">
+                                <div class="form-increment" data-quantity-change="">
+                                    <button class="button button--icon" data-action="dec" type="button">
+                                        <span class="is-srOnly">Decrease Quantity:</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 256 256" xml:space="preserve">
+                                            <g  transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
+                                                <path
+                                                    d="M 90 24.25 c 0 -0.896 -0.342 -1.792 -1.025 -2.475 c -1.366 -1.367 -3.583 -1.367 -4.949 0 L 45 60.8 L 5.975 21.775 c -1.367 -1.367 -3.583 -1.367 -4.95 0 c -1.366 1.367 -1.366 3.583 0 4.95 l 41.5 41.5 c 1.366 1.367 3.583 1.367 4.949 0 l 41.5 -41.5 C 89.658 26.042 90 25.146 90 24.25 z"
+                                                    style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;"
+                                                    transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                            </g>
+                                        </svg>
+                                    </button>
+                                    <input class="form-input form-input--incrementTotal data-product-qty" id="data-product-qty-{{id}}" name="data-product-qty" type="tel" value="0" data-quantity-min="0" data-quantity-max="0" min="0" pattern="[0-9]*" aria-live="polite">
+                                    <button class="button button--icon" data-action="inc" type="button">
+                                        <span class="is-srOnly">Increase Quantity:</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 256 256" xml:space="preserve">
+                                            <g transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
+                                                <path
+                                                    d="M 90 65.75 c 0 0.896 -0.342 1.792 -1.025 2.475 c -1.366 1.367 -3.583 1.367 -4.949 0 L 45 29.2 L 5.975 68.225 c -1.367 1.367 -3.583 1.367 -4.95 0 c -1.366 -1.367 -1.366 -3.583 0 -4.95 l 41.5 -41.5 c 1.366 -1.367 3.583 -1.367 4.949 0 l 41.5 41.5 C 89.658 63.958 90 64.854 90 65.75 z"
+                                                    style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;"
+                                                    transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                            </g>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="data-product-option-{{id}}"><a href="{{url}}" class="button button--primary add-to-cart-option" data-product-id="{{id}}">{{lang "products.pre_order"}}</a></div>
+
+
+                        {{else}}
+                            {{#if out_of_stock_message }}
+                            <div class="form-field form-field--increments">&nbsp;</div>
+                            <div class="alert alert-warning text-center">{{out_of_stock_message}}</div>
+                            {{else}}
+                            <div class="form-field form-field--increments">
+                                <div class="form-increment" data-quantity-change="">
+                                    <button class="button button--icon" data-action="dec" type="button">
+                                        <span class="is-srOnly">Decrease Quantity:</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 256 256" xml:space="preserve">
+                                            <g  transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
+                                                <path
+                                                    d="M 90 24.25 c 0 -0.896 -0.342 -1.792 -1.025 -2.475 c -1.366 -1.367 -3.583 -1.367 -4.949 0 L 45 60.8 L 5.975 21.775 c -1.367 -1.367 -3.583 -1.367 -4.95 0 c -1.366 1.367 -1.366 3.583 0 4.95 l 41.5 41.5 c 1.366 1.367 3.583 1.367 4.949 0 l 41.5 -41.5 C 89.658 26.042 90 25.146 90 24.25 z"
+                                                    style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;"
+                                                    transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                            </g>
+                                        </svg>
+                                    </button>
+                                    <input class="form-input form-input--incrementTotal data-product-qty" id="data-product-qty-{{id}}" name="data-product-qty" type="tel" value="0" data-quantity-min="0" data-quantity-max="0" min="0" pattern="[0-9]*" aria-live="polite">
+                                    <button class="button button--icon" data-action="inc" type="button">
+                                        <span class="is-srOnly">Increase Quantity:</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 256 256" xml:space="preserve">
+                                            <g transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
+                                                <path
+                                                    d="M 90 65.75 c 0 0.896 -0.342 1.792 -1.025 2.475 c -1.366 1.367 -3.583 1.367 -4.949 0 L 45 29.2 L 5.975 68.225 c -1.367 1.367 -3.583 1.367 -4.95 0 c -1.366 -1.367 -1.366 -3.583 0 -4.95 l 41.5 -41.5 c 1.366 -1.367 3.583 -1.367 4.949 0 l 41.5 41.5 C 89.658 63.958 90 64.854 90 65.75 z"
+                                                    style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;"
+                                                    transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                            </g>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <a href="{{add_to_cart_url}}" class="button button--primary add-to-cart" data-product-id="{{id}}">{{lang "products.add_to_cart"}}</a>
+                            {{/if}}
+                        {{/if}}
+                    {{/if}}
+                    </div>
+                {{/unless}}
+                {{#if show_compare}}
+                    <label class="button button--small" for="compare-{{id}}">
+                        {{lang "products.compare"}} <input type="checkbox" name="products[]" value="{{id}}" id="compare-{{id}}" data-compare-id="{{id}}">
+                    </label>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</article>

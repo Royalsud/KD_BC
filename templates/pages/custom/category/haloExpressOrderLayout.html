@@ -1,0 +1,45 @@
+---
+category:
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+<div class="container" id="haloExpressOrderLayout">
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+    <div class="category-heading">
+        <h1 class="page-heading">{{category.name}}</h1>
+        {{> components/products/filter sort=pagination.category.sort}}
+    </div>
+
+    <div class="page row">
+
+        <main class="page-content col-sm-12" id="product-listing-container">
+
+
+            {{#if category.products}}
+                <form action="{{urls.compare}}" method='POST' data-product-compare>
+
+                    {{> components/halothemes/halo-express-order-list products=category.products show_compare=false theme_settings=theme_settings}}
+
+                </form>
+            {{else}}
+                <div class="alert alert-warning text-center"><p>{{lang 'categories.no_products'}}</p></div>
+            {{/if}}
+        </main>
+    </div>
+</div>
+{{/partial}}
+{{> layout/base}}
+
+

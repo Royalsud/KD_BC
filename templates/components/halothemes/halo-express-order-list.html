@@ -1,0 +1,14 @@
+<ul class="productList">
+    {{#each products}}
+    <li class="product">
+        {{>components/halothemes/halo-express-order-item show_compare=../show_compare show_rating=../settings.show_product_rating theme_settings=../theme_settings}}
+    </li>
+    {{/each}}
+</ul>
+
+<div class="halo-express-bottom">
+   <div class="product-pagination bottom">
+       {{> components/common/paginator pagination.category}}
+   </div>
+   <a href="javascript:void(0);" id="add-all-to-cart" class="button button--primary">Add All To Cart</a>
+</div>
