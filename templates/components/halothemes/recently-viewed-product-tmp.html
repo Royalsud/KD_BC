@@ -7,6 +7,18 @@
       <h4 class="card-title">
           <a href="{{product.url}}">{{product.title}}</a>
       </h4>
+<<<<<<< HEAD
+=======
+      <dl class="productView-info">
+        {{#each product.custom_fields}}
+            {{#startsWith '__' name}}
+            {{else}}
+                <dt class="productView-info-name">{{name}}:</dt>
+                <dd class="productView-info-value">{{{value}}}</dd>
+            {{/startsWith}}
+        {{/each}}
+     </dl>
+>>>>>>> sudip
       <div class="card-price" data-test-info-type="price">
           {{#or customer (if theme_settings.restrict_to_login '!==' true)}}                    
               {{#if price_range}}

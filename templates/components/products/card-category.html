@@ -134,6 +134,18 @@
                {{#if settings.data_tag_enabled}} data-event-type="product-click"{{/if}}{{#if theme_settings.card_title_type '==' 'clamp'}} class="clamp" style="-webkit-box-orient: vertical; -webkit-line-clamp: {{theme_settings.card_title_line}};"{{/if}}><span>{{name}}</span></a>
         </h3>
 
+<<<<<<< HEAD
+=======
+        <dl class="productView-info">
+            {{#each custom_fields}}
+                {{#startsWith '__' name}}
+                {{else}}
+                    <dd class="productView-info-value">{{{value}}}</dd>
+                {{/startsWith}}
+            {{/each}}
+         </dl>
+
+>>>>>>> sudip
         <div class="card-price" data-test-info-type="price">
             {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
                 {{> components/products/price price=price}}

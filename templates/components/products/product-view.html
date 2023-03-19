@@ -251,6 +251,18 @@
                     </h2>
                 {{/if}}
                 <h1 class="productView-title" {{#if schema}}itemprop="name"{{/if}}>{{product.title}}</h1>
+<<<<<<< HEAD
+=======
+                <dl class="productView-info">
+                    {{#each product.custom_fields}}
+                        {{#startsWith '__' name}}
+                        {{else}}
+                            <dt class="productView-info-name">{{name}}:</dt>
+                            <dd class="productView-info-value">{{{value}}}</dd>
+                        {{/startsWith}}
+                    {{/each}}
+                 </dl>
+>>>>>>> sudip
                 <div class="productView-rating-wrap">
                     <div class="productView-rating"{{#if product.num_reviews '>' 0}}{{#if schema}} itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"{{/if}}{{/if}}>
                         {{#if settings.show_product_rating}}

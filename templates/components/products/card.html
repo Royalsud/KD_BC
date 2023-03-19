@@ -133,7 +133,18 @@
                href="{{url}}" 
                {{#if settings.data_tag_enabled}} data-event-type="product-click"{{/if}}{{#if theme_settings.card_title_type '==' 'clamp'}} class="clamp" style="-webkit-box-orient: vertical; -webkit-line-clamp: {{theme_settings.card_title_line}};"{{/if}}><span>{{name}}</span></a>
         </h3>
+<<<<<<< HEAD
 
+=======
+        <dl class="productView-info">
+            {{#each custom_fields}}
+                {{#startsWith '__' name}}
+                {{else}}
+                    <dd class="productView-info-value">{{{value}}}</dd>
+                {{/startsWith}}
+            {{/each}}
+         </dl>
+>>>>>>> sudip
         <div class="card-price" data-test-info-type="price">
             {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
                 {{> components/products/price price=price}}
@@ -172,7 +183,11 @@
                 {{/or}}
                 {{#if show_wishlist}}
                     <a href="/wishlist.php?action=add&product_id={{id}}" class="wishlist{{#if theme_settings.show_product_wishlist_mb}} show-mobile{{/if}}" aria-label="{{lang 'account.wishlists.add_item'}}">
+<<<<<<< HEAD
                         <svg class="icon" aria-hidden="true" style="background: 'red';"><use xlink:href="#icon-wishlist"/></svg>
+=======
+                        <svg class="icon" aria-hidden="true"><use xlink:href="#icon-wishlist"/></svg>
+>>>>>>> sudip
                     </a>
                 {{/if}}
             </div>
